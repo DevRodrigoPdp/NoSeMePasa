@@ -17,6 +17,12 @@
     (addTask)="addTask($event)"
   />
 
+  <div class="mb-8">
+    <app-task-form
+      (createTask)="createTask($event)"
+    />
+  </div>
+
   <div class="mb-4 flex items-center justify-between">
     <h2 class="text-lg font-semibold text-slate-900">Pendientes</h2>
 

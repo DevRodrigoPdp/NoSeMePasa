@@ -14,3 +14,12 @@ export interface Task {
     createdAt: string | null;
     updatedAt: string | null;
 }
+
+export interface CreateTaskData {
+  title: string;
+  description?: string;
+  category: TaskCategory;
+  priority: TaskPriority;
+  dueDate: string | null;
+  isImportant: boolean;
+}

@@ -1,6 +1,7 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { Task } from '../models/task.model';
 import { TASKS_MOCK } from './tasks.mock';
+import { CreateTaskData } from '../models/task.model';
 
 @Injectable({
   providedIn: 'root',
@@ -85,29 +86,42 @@ export class TasksService {
     this.tasksSignal.update((tasks) => tasks.filter((task) => task.id !== taskId));
   }
 
-  addTask(title: string): void {
-    const cleanTitle = title.trim();
+  addTask(taskData: string | CreateTaskData): void {
+  const now = new Date().toISOString();
 
-    if (!cleanTitle) {
-      return;
-    }
-    const now = new Date().toISOString();
+  const data: CreateTaskData =
+    typeof taskData === 'string'
+      ? {
+          title: taskData,
+          description: '',
+          category: 'other',
+          priority: 'medium',
+          dueDate: null,
+          isImportant: false,
+        }
+      : taskData;
 
-    const newTask: Task = {
-      id: crypto.randomUUID(),
-      title,
-      description: undefined,
-      category: 'other',
-      priority: 'medium',
-      dueDate: null,
-      status: 'pending',
-      isImportant: false,
-      createdAt: now,
-      updatedAt: now,
-    };
+  const cleanTitle = data.title.trim();
 
-    this.tasksSignal.update((tasks) => [newTask, ...tasks]);
+  if (!cleanTitle) {
+    return;
   }
+
+  const newTask: Task = {
+    id: crypto.randomUUID(),
+    title: cleanTitle,
+    description: data.description?.trim() || '',
+    category: data.category,
+    priority: data.priority,
+    dueDate: data.dueDate,
+    status: 'pending',
+    isImportant: data.isImportant,
+    createdAt: now,
+    updatedAt: now,
+  };
+
+  this.tasksSignal.update((tasks) => [newTask, ...tasks]);
+}
 
   toggleImportant(taskId: string): void {
     const now = new Date().toISOString();

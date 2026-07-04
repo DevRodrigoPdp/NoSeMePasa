@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { NaturalTaskInput } from '../../components/natural-task-input/natural-task-input';
+import { TaskForm } from '../../components/task-form/task-form';
 import { TaskList } from '../../components/task-list/task-list';
+import { CreateTaskData } from '../../models/task.model';
 import { TasksService } from '../../services/tasks.service';
-
 
 @Component({
   selector: 'app-tasks-home-page',
-  imports: [NaturalTaskInput, TaskList],
+  imports: [NaturalTaskInput, TaskForm, TaskList],
   templateUrl: './tasks-home-page.html',
   styleUrl: './tasks-home-page.css',
 })
@@ -17,6 +18,10 @@ export class TasksHomePage {
 
   addTask(title: string): void {
     this.taskService.addTask(title);
+  }
+
+  createTask(taskData: CreateTaskData): void {
+    this.taskService.addTask(taskData);
   }
 
   completeTask(taskId: string): void {
