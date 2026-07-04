@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { TasksService } from '../../services/tasks.service';
+import { NaturalTaskInput } from '../../components/natural-task-input/natural-task-input';
 import { TaskList } from '../../components/task-list/task-list';
+import { TasksService } from '../../services/tasks.service';
 
 
 @Component({
   selector: 'app-tasks-home-page',
-  imports: [FormsModule, TaskList],
+  imports: [NaturalTaskInput, TaskList],
   templateUrl: './tasks-home-page.html',
   styleUrl: './tasks-home-page.css',
 })
@@ -15,28 +15,19 @@ export class TasksHomePage {
 
   readonly tasks = this.taskService.pendingTasks;
 
-  taskTitle = '';
-
-  addTask(): void {
-    const cleanTitle = this.taskTitle.trim();
-
-    if (!cleanTitle) {
-      return;
-    }
-
-    this.taskService.addTask(cleanTitle);
-    this.taskTitle = '';
+  addTask(title: string): void {
+    this.taskService.addTask(title);
   }
 
   completeTask(taskId: string): void {
-  this.taskService.completeTask(taskId);
-}
+    this.taskService.completeTask(taskId);
+  }
 
-toggleImportant(taskId: string): void {
-  this.taskService.toggleImportant(taskId);
-}
+  toggleImportant(taskId: string): void {
+    this.taskService.toggleImportant(taskId);
+  }
 
-deleteTask(taskId: string): void {
-  this.taskService.deleteTask(taskId);
-}
+  deleteTask(taskId: string): void {
+    this.taskService.deleteTask(taskId);
+  }
 }

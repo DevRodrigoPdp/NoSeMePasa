@@ -1,16 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TasksHomePage } from './tasks-home-page';
 
-describe('TasksHomePage', () => {
-  let component: TasksHomePage;
-  let fixture: ComponentFixture<TasksHomePage>;
+import { NaturalTaskInput } from './natural-task-input';
+
+describe('NaturalTaskInput', () => {
+  let component: NaturalTaskInput;
+  let fixture: ComponentFixture<NaturalTaskInput>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TasksHomePage],
+      imports: [NaturalTaskInput],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TasksHomePage);
+    fixture = TestBed.createComponent(NaturalTaskInput);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
