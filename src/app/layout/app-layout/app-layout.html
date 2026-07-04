@@ -1,0 +1,123 @@
+<div class="min-h-screen bg-slate-100 text-slate-950">
+  <div class="mx-auto flex min-h-screen w-full max-w-7xl">
+    <!-- Sidebar escritorio -->
+    <aside class="hidden w-64 shrink-0 border-r border-slate-200 bg-white px-4 py-6 md:block">
+      <div class="mb-8">
+        <p class="text-sm font-medium text-slate-500">NoSeMePasa AI</p>
+        <h1 class="mt-1 text-xl font-bold tracking-tight text-slate-950">Tus recordatorios</h1>
+      </div>
+
+      <nav class="space-y-1">
+        <a
+          routerLink="/"
+          routerLinkActive="bg-slate-100 text-slate-950"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+        >
+          Inicio
+        </a>
+
+        <a
+          routerLink="/today"
+          routerLinkActive="bg-slate-100 text-slate-950"
+          class="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+        >
+          Hoy
+        </a>
+
+        <a
+          routerLink="/important"
+          routerLinkActive="bg-slate-100 text-slate-950"
+          class="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+        >
+          Importantes
+        </a>
+
+        <a
+          routerLink="/completed"
+          routerLinkActive="bg-slate-100 text-slate-950"
+          class="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+        >
+          Completadas
+        </a>
+
+        <a
+          routerLink="/no-pressure"
+          routerLinkActive="bg-slate-100 text-slate-950"
+          class="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+        >
+          No me agobies
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Contenido -->
+    <main class="w-full flex-1 pb-24 md:pb-0">
+      <router-outlet />
+    </main>
+  </div>
+
+  <!-- Bottom nav móvil -->
+  <nav class="fixed inset-x-0 bottom-0 border-t border-slate-200 bg-white px-2 py-2 md:hidden">
+    <div class="mx-auto grid max-w-md grid-cols-5 gap-1">
+      <a
+        routerLink="/"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="bg-slate-100 text-slate-950"
+        class="rounded-2xl px-2 py-2 text-center text-xs font-medium text-slate-600"
+      >
+        Inicio
+      </a>
+
+      <a
+        routerLink="/today"
+        routerLinkActive="bg-slate-100 text-slate-950"
+        class="rounded-2xl px-2 py-2 text-center text-xs font-medium text-slate-600"
+      >
+        Hoy
+      </a>
+
+      <a
+        routerLink="/important"
+        routerLinkActive="bg-slate-100 text-slate-950"
+        class="rounded-2xl px-2 py-2 text-center text-xs font-medium text-slate-600"
+      >
+        Imp.
+      </a>
+
+      <a
+        routerLink="/completed"
+        routerLinkActive="bg-slate-100 text-slate-950"
+        class="rounded-2xl px-2 py-2 text-center text-xs font-medium text-slate-600"
+      >
+        Hechas
+      </a>
+
+      <a
+        routerLink="/no-pressure"
+        routerLinkActive="bg-slate-100 text-slate-950"
+        class="rounded-2xl px-2 py-2 text-center text-xs font-medium text-slate-600"
+      >
+        1 tarea
+      </a>
+      <a
+        routerLink="/upcoming"
+        routerLinkActive="bg-slate-900 text-white"
+        class="rounded-2xl px-4 py-3 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+      >
+        Próximos días
+      </a>
+
+      <a
+        routerLink="/no-date"
+        routerLinkActive="bg-slate-900 text-white"
+        class="rounded-2xl px-4 py-3 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+      >
+        Sin fecha
+      </a>
+      <a routerLink="/upcoming" routerLinkActive="text-slate-900" class="text-xs"> Próximos </a>
+
+      <a routerLink="/no-date" routerLinkActive="text-slate-900" class="text-xs"> Sin fecha </a>
+    </div>
+  </nav>
+</div>

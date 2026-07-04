@@ -1,0 +1,31 @@
+<section class="mx-auto flex min-h-screen w-full max-w-4xl flex-col px-6 py-10">
+  <header class="mb-8">
+    <p class="text-sm font-medium text-slate-500">
+      Tareas terminadas
+    </p>
+
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-950">
+      Completadas
+    </h1>
+
+    <p class="mt-3 text-slate-600">
+      Aquí puedes ver las tareas que ya has marcado como hechas.
+    </p>
+  </header>
+
+  <div class="mb-4 flex items-center justify-between">
+    <h2 class="text-lg font-semibold text-slate-900">
+      Historial de tareas completadas
+    </h2>
+
+    <span class="rounded-full bg-slate-200 px-3 py-1 text-sm text-slate-700">
+      {{ tasks().length }}
+    </span>
+  </div>
+
+  <app-task-list
+    [tasks]="tasks()"
+    (toggleImportant)="toggleImportant($event)"
+    (delete)="deleteTask($event)"
+  />
+</section>

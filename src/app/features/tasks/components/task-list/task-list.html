@@ -1,0 +1,17 @@
+@if (tasks().length > 0) {
+  <div class="space-y-3">
+    @for (task of tasks(); track task.id) {
+      <app-task-card
+        [task]="task"
+        (complete)="complete.emit($event)"
+        (toggleImportant)="toggleImportant.emit($event)"
+        (delete)="delete.emit($event)"
+      />
+    }
+  </div>
+} @else {
+  <div class="rounded-2xl border border-dashed border-slate-300 bg-white p-6 text-center">
+    <p class="font-medium text-slate-700">No hay tareas por aquí.</p>
+    <p class="mt-1 text-sm text-slate-500">Cuando añadas tareas, aparecerán en esta sección.</p>
+  </div>
+}
